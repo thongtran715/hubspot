@@ -1,29 +1,29 @@
-const store = require("../store");
-const request = require("request-promise");
+const store = require('../store');
+const request = require('request-promise');
 
 const updateAccessToken = async () => {
   try {
     let response = await request({
       url:
-        "https://api.hubapi.com/oauth/v1/access-tokens/" + store.ACCESS_TOKEN,
-      method: "GET",
-      headers: { accept: "application/json" },
+        'https://api.hubapi.com/oauth/v1/access-tokens/' + store.ACCESS_TOKEN,
+      method: 'GET',
+      headers: { accept: 'application/json' },
     });
     const expires = response.expires_in;
 
     if (expires <= 60) {
       const form = {
-        grant_type: "refresh_token",
-        client_id: process.env.client_id,
-        client_secret: process.env.client_secret,
+        grant_type: 'refresh_token',
+        client_id: process.env.hubspot_client_id,
+        client_secret: process.env.hubspot_client_secret,
         refresh_token: store.REFRESH_TOKEN,
       };
       const response = await request({
-        url: "https://api.hubapi.com/oauth/v1/token",
-        method: "POST",
+        url: 'https://api.hubapi.com/oauth/v1/token',
+        method: 'POST',
         form,
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
         json: true,
       });
@@ -34,17 +34,17 @@ const updateAccessToken = async () => {
 
 const handleAuth = async (code) => {
   const response = await request({
-    url: "https://api.hubapi.com/oauth/v1/token",
-    method: "POST",
+    url: 'https://api.hubapi.com/oauth/v1/token',
+    method: 'POST',
     form: {
-      grant_type: "authorization_code",
-      client_id: process.env.client_id,
-      client_secret: process.env.client_secret,
-      redirect_uri: "https://882dd2ca380a.ngrok.io/auth",
+      grant_type: 'authorization_code',
+      client_id: process.env.hubspot_client_id,
+      client_secret: process.env.hubspot_client_secret,
+      redirect_uri: `${process.env.hubspot_redirect_uri}`,
       code,
     },
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
     json: true,
   });
@@ -53,48 +53,65 @@ const handleAuth = async (code) => {
   store.ACCESS_TOKEN = access_token;
 };
 
-const searchContact = async (phone) => {
-  request({
-    url: "https://api.hubapi.com/crm/v3/objects/contacts/search",
-    method: "POST",
+const searchContact = (phone) => {
+  return request({
+    url: 'https://api.hubapi.com/crm/v3/objects/contacts/search',
+    method: 'POST',
     body: {
-      query: phone,
+      filterGroups: [
+        {
+          filters: [{ value: phone, propertyName: 'phone', operator: 'EQ' }],
+        },
+      ],
     },
     headers: {
       Authorization: `Bearer ${store.ACCESS_TOKEN}`,
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     json: true,
   });
 };
 
-const createContact = async (req) => {
-  updateAccessToken();
-  const {
-    message: { contact_id },
-  } = req.body;
-  //   searchContact(contact_id);
-  const res = await request({
-    method: "POST",
-    url: "https://api.hubapi.com/crm/v3/objects/contacts",
+const getContact = async (objectId) => {
+  return request({
+    url: `https://api.hubapi.com/crm/v3/objects/contacts/${objectId}?properties=phone,firstname`,
+    method: 'GET',
     headers: {
-      accept: "application/json",
-      "content-type": "application/json",
+      Authorization: `Bearer ${store.ACCESS_TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+    json: true,
+  });
+};
+
+const createContact = async ({ phone, name }) => {
+  await updateAccessToken();
+  const { total } = await searchContact(phone);
+  if (total > 0) {
+    throw new Error('Contact existed');
+  }
+  return request({
+    method: 'POST',
+    url: 'https://api.hubapi.com/crm/v3/objects/contacts',
+    headers: {
+      accept: 'application/json',
+      'content-type': 'application/json',
       authorization: `Bearer ${store.ACCESS_TOKEN}`,
     },
     body: {
       properties: {
-        firstname: "Brayn",
-        phone: contact_id,
+        firstname: name,
+        phone: phone,
       },
     },
     json: true,
   });
-  console.log(res);
 };
 
 module.exports = {
   handleAuth,
   updateAccessToken,
   createContact,
+  searchContact,
+  getContact,
 };
