@@ -13,4 +13,5 @@ client to HubSpot, and Hubspot can use a universal Conversation API to interact 
 
 The demo will use Facebook Messenger, and SMS for the demo. Of course, we can configure more channels. 
 
+![Message flow](images/message_flow.png)
 
