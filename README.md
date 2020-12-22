@@ -23,16 +23,17 @@ SINCH_PROJECT_ID=${VALUE} # Sinch Project Id
 sinch_client_id=${VALUE} # Sinch Client Id
 sinch_client_secret=${VALUE} # Sinch Client Secret
 
-Visit HubSpot to create a developer account and app to obtain client_id, client_secret. To get these values, go under the Auth Info tab when your app is created. 
+Visit [HubSpot](https://developers.hubspot.com/) to create a developer account and app to obtain client_id, client_secret. To get these values, go under the Auth Info tab when your app is created. 
 
 ![Message flow](images/hubspot_auth.png)
 
-Visit Sinch to set up a Sinch Account. 
+Visit [Sinch](https://www.sinch.com/sign-up/) to set up a Sinch Account. 
 
 ![Message flow](images/sinch_signup.png)
 
-To configure channels within Sinch, visit Quick Start. There is a variety of channels that can be configured (i.e. Messenger, SMS, Viber, Whatsapp, and RCS). To learn more about the channels that are offered visit https://developers.sinch.com/. 
-Next, install Ngrok to expose your app to the world. 
+To configure channels within Sinch, visit [Quick Start](https://developers.sinch.com/docs/conversation_quick_guide). There is a variety of channels that can be configured (i.e. Messenger, SMS, Viber, Whatsapp, and RCS). To learn more about the channels that are offered visit https://developers.sinch.com/. 
+
+Next, install [Ngrok](https://ngrok.com/) to expose your app to the world. 
 
 ## Running App. 
 
