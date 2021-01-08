@@ -5,22 +5,22 @@ With a CRM like HubSpot, there is the advantage to manage a list of customers an
 
 The following demo will show how one API can be set up quickly, work across multiple channels, and reduce the learning curve to a minimal. 
 
-## What in this demo:
-
-The demo will show how different clients from various channels can interact to the application. From there, the information of the client can be saved to HubSpot. HubSpot can then use a universal Conversation API to interact back to the client.
-
-![Message flow](images/message_flow.png)
-
 ## Set up
 
 First, create a .env file to hold the following variables
 
 hubspot_client_id=${VALUE} # hubspot client id 
+
 hubspot_client_secret=${VALUE} # Hubspot client secret
+
 hubspot_redirect_uri=${VALUE} # the URI link for the application to obtain access token from Hubspot
+
 SINCH_APP_ID=${VALUE} # Sinch APP ID
+
 SINCH_PROJECT_ID=${VALUE} # Sinch Project Id
+
 sinch_client_id=${VALUE} # Sinch Client Id
+
 sinch_client_secret=${VALUE} # Sinch Client Secret
 
 Visit [HubSpot](https://developers.hubspot.com/) to create a developer account and app to obtain client_id, client_secret. To get these values, go under the Auth Info tab when your app is created. 
@@ -35,6 +35,13 @@ To configure channels within Sinch, visit [Quick Start](https://developers.sinch
 
 Next, install [Ngrok](https://ngrok.com/) to expose your app to the world. 
 
+
+## What in this demo:
+
+The demo will show how different clients from various channels can interact to the application. From there, the information of the client can be saved to HubSpot. HubSpot can then use a universal Conversation API to interact back to the client.
+
+![Message flow](images/message_flow.png)
+
 ## Running App. 
 
 Once everything is installed, use a terminal to start running the app. Go to Terminal on Mac or Command prompt on Windows, and run the following command to start the app.
@@ -47,3 +54,10 @@ The app is now running and exposed to the world!
 
 Note: To configure redirect_uri as {ngrok_link/auth}, visit hubspot  
 e.g. https://9c88e5323886.ngrok.io/auth
+
+
+## Disclaimer 
+
+Since Conversation API introduces a concept called `contact_id` which helps identifies the identity of the sender i.e SMS , WhatsApp phone number, Facebook Contact Id. 
+
+This app will save the `phone number` to hubspot using `contact_id`. And Hubspot can always retrieve the detail of the contact using Sinch Get Contact API (https://developers.sinch.com/reference#contact_getcontact)
