@@ -1,9 +1,9 @@
 # Sinch And HubSpot Integration Demo 
 
 ## Introduction
-With a CRM like HubSpot, there is the advantage to manage a list of customers and use one API for multiple channels. There is no need to spend the time to configure and learn how to configure the various APIs when only one API can be used for more than one channel.
+With CRMs like HubSpot, you can manage a list of customers by using one API for multiple channels. This saves time from learning and configuring various APIs. 
 
-The following demo will show how one API can be set up quickly, work across multiple channels, and reduce the learning curve to a minimal. 
+Follow this demo to set up Conversation API to work across multiple channels and to reduce the learning curve to a minimal. 
 
 ## Set up
 
@@ -29,22 +29,21 @@ Visit [HubSpot](https://developers.hubspot.com/) to create a developer account a
 
 Visit [Sinch](https://www.sinch.com/sign-up/) to set up a Sinch Account. 
 
-![Message flow](images/sinch_signup.png)
+To configure channels within Sinch, visit [Quick Start](https://developers.sinch.com/docs/conversation_quick_guide). When a new app is set up, you can get the SINCH_APP_ID and SINCH_PROJECT_ID. Generate an access key to obtain sinch_client_id and sinch_client_secret. There is a variety of channels that can be configured (i.e. Messenger, SMS, Viber, Whatsapp, and RCS). To learn more about the channels that are offered visit https://developers.sinch.com/. 
 
-To configure channels within Sinch, visit [Quick Start](https://developers.sinch.com/docs/conversation_quick_guide). There is a variety of channels that can be configured (i.e. Messenger, SMS, Viber, Whatsapp, and RCS). To learn more about the channels that are offered visit https://developers.sinch.com/. 
 
 Next, install [Ngrok](https://ngrok.com/) to expose your app to the world. 
 
 
-## What in this demo:
+## What is in this demo:
 
-The demo will show how different clients from various channels can interact to the application. From there, the information of the client can be saved to HubSpot. HubSpot can then use a universal Conversation API to interact back to the client.
+The demo will show how to use a HupSpot application with Conversation API for various of channels. From there, client information will be saved to HubSpot, and you can interact back to the client using Conversation API. 
 
 ![Message flow](images/message_flow.png)
 
 ## Running App. 
 
-Once everything is installed, use a terminal to start running the app. Go to Terminal on Mac or Command prompt on Windows, and run the following command to start the app.
+Once everything is installed, use your local terminal to run the following command and start the app.
 npm install 
 
 Run the next command.
@@ -58,6 +57,6 @@ e.g. https://9c88e5323886.ngrok.io/auth
 
 ## Disclaimer 
 
-Since Conversation API introduces a concept called `contact_id` which helps identifies the identity of the sender i.e SMS , WhatsApp phone number, Facebook Contact Id. 
+Conversation API introduces a concept called `contact_id` which iss the identity of the sender (e.g. SMS, WhatsApp phone number, Facebook Contact Id)
 
-This app will save the `phone number` to hubspot using `contact_id`. And Hubspot can always retrieve the detail of the contact using Sinch Get Contact API (https://developers.sinch.com/reference#contact_getcontact)
+This app will save the `phone number` to hubspot using `contact_id`. And Hubspot can retrieve contact details using Sinch Get Contact API (https://developers.sinch.com/reference#contact_getcontact)
