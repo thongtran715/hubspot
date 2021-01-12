@@ -1,49 +1,43 @@
 # Sinch And HubSpot Integration Demo 
 
 ## Introduction
-With a CRM like HubSpot, there is the advantage to manage a list of customers and use one API for multiple channels. There is no need to spend the time to configure and learn how to configure the various APIs when only one API can be used for more than one channel.
+Learn how to quickly set up and manage your customer lists across multiple channels, using the HubSpot CRM and Sinch Conversation API integration.
 
-The following demo will show how one API can be set up quickly, work across multiple channels, and reduce the learning curve to a minimal. 
+Visit [HubSpot](https://developers.hubspot.com/) to create a developer account and app to obtain a Hubspot client_id and client_secret. To get your client_id and client_secret, go to the Auth Info tab when your Hubspot app is created. Then, visit [Sinch](https://www.sinch.com/sign-up/) to set up a Sinch Account. 
 
-## What in this demo:
+Our [getting started](https://developers.sinch.com/docs/conversation_quick_guide) page shows you how to configure a variety of channels, get your SINCH_APP_ID and SINCH_PROJECT_ID and generate an access key to obtain your sinch_client_id and sinch_client_secret. Click [here](https://developers.sinch.com/docs/conversation-channel-support) to learn more about the channels that Sinch offers.
 
-The demo will show how different clients from various channels can interact to the application. From there, the information of the client can be saved to HubSpot. HubSpot can then use a universal Conversation API to interact back to the client.
+Once you have your SINCH_APP_ID, SINCH_PROJECT_ID and access key, install [Ngrok](https://ngrok.com/) to expose your app to the world and begin leveraging the power of Hubspot and the Sinch Conversation API. Click [here](https://developers.sinch.com/docs/conversation) to learn more about the Sinch Conversation API.
 
 ![Message flow](images/message_flow.png)
 
+**Note:** The below information is only for demonstration purposes and is not intended to be used for production or operation.
+
 ## Set up
 
-First, create a .env file to hold the following variables
+Create a .env file to hold the following variables:
 
 hubspot_client_id=${VALUE} # hubspot client id 
+
 hubspot_client_secret=${VALUE} # Hubspot client secret
+
 hubspot_redirect_uri=${VALUE} # the URI link for the application to obtain access token from Hubspot
+
 SINCH_APP_ID=${VALUE} # Sinch APP ID
+
 SINCH_PROJECT_ID=${VALUE} # Sinch Project Id
+
 sinch_client_id=${VALUE} # Sinch Client Id
+
 sinch_client_secret=${VALUE} # Sinch Client Secret
 
-Visit [HubSpot](https://developers.hubspot.com/) to create a developer account and app to obtain client_id, client_secret. To get these values, go under the Auth Info tab when your app is created. 
+## Running the application 
 
-![Message flow](images/hubspot_auth.png)
+Once everything is installed, use your local terminal to run the npm install command and ngrok http 3000 command which will start and run the app, exposing it to the world. 
 
-Visit [Sinch](https://www.sinch.com/sign-up/) to set up a Sinch Account. 
+Note: To configure redirect_uri as {ngrok_link/auth}, visit hubspot. E.g. https://9c88e5323886.ngrok.io/auth
 
-![Message flow](images/sinch_signup.png)
 
-To configure channels within Sinch, visit [Quick Start](https://developers.sinch.com/docs/conversation_quick_guide). There is a variety of channels that can be configured (i.e. Messenger, SMS, Viber, Whatsapp, and RCS). To learn more about the channels that are offered visit https://developers.sinch.com/. 
+## Disclaimer 
 
-Next, install [Ngrok](https://ngrok.com/) to expose your app to the world. 
-
-## Running App. 
-
-Once everything is installed, use a terminal to start running the app. Go to Terminal on Mac or Command prompt on Windows, and run the following command to start the app.
-npm install 
-
-Run the next command.
-ngrok http 3000
-
-The app is now running and exposed to the world!
-
-Note: To configure redirect_uri as {ngrok_link/auth}, visit hubspot  
-e.g. https://9c88e5323886.ngrok.io/auth
+The Sinch Conversation API introduces a concept called `contact_id` which is the identity of the sender (e.g. SMS, WhatsApp phone number, Facebook Contact Id). This app will save the `phone number` to hubspot using `contact_id`. Hubspot can retrieve contact details using the [Sinch Get Contact API] (https://developers.sinch.com/reference#contact_getcontact)
