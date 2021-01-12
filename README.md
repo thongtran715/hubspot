@@ -7,9 +7,11 @@ Visit [HubSpot](https://developers.hubspot.com/) to create a developer account a
 
 Our [getting started](https://developers.sinch.com/docs/conversation_quick_guide) page shows you how to configure a variety of channels, get your SINCH_APP_ID and SINCH_PROJECT_ID and generate an access key to obtain your sinch_client_id and sinch_client_secret. Generate an access key to obtain sinch_client_id and sinch_client_secret. Learn more about the channels that are offered by visting https://developers.sinch.com/docs/conversation-channel-support. 
 
-Once you have your SINCH_APP_ID, SINCH_PROJECT_ID and access key, install [Ngrok](https://ngrok.com/) to expose your app to the world and begin leveraging the power of Hubspot and the Sinch Conversation API.
+Once you have your SINCH_APP_ID, SINCH_PROJECT_ID and access key, install [Ngrok](https://ngrok.com/) to expose your app to the world and begin leveraging the power of Hubspot and the Sinch Conversation API. Click [here](https://developers.sinch.com/docs/conversation) to learn more about the Sinch Conversation API.
 
 ![Message flow](images/message_flow.png)
+
+**Note:** The below information is only for demonstration purposes and is not intended to be used for production or operation.
 
 ## Set up
 
