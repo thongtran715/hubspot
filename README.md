@@ -1,7 +1,7 @@
 # Sinch And HubSpot Integration Demo 
 
 ## Introduction
-Learn how to quickly set up and manage your customer lists, across multiple channels, using the HubSpot CRM and Sinch Conversation API integration.
+Learn how to quickly set up and manage your customer lists across multiple channels, using the HubSpot CRM and Sinch Conversation API integration.
 
 Visit [HubSpot](https://developers.hubspot.com/) to create a developer account and app to obtain a Hubspot client_id and client_secret. To get your client_id and client_secret, go to the Auth Info tab when your Hubspot app is created. Then, visit [Sinch](https://www.sinch.com/sign-up/) to set up a Sinch Account. 
 
