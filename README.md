@@ -3,9 +3,9 @@
 ## Introduction
 Learn how to quickly set up and manage your customer lists, across multiple channels, using the HubSpot CRM and Sinch Conversation API integration.
 
-Visit [HubSpot](https://developers.hubspot.com/) to create a developer account and app to obtain client_id, client_secret. To get these values, go to the Auth Info tab when your app is created. Then, visit [Sinch](https://www.sinch.com/sign-up/) to set up a Sinch Account. 
+Visit [HubSpot](https://developers.hubspot.com/) to create a developer account and app to obtain a Hubspot client_id and client_secret. To get your client_id and client_secret, go to the Auth Info tab when your Hubspot app is created. Then, visit [Sinch](https://www.sinch.com/sign-up/) to set up a Sinch Account. 
 
-Our [getting started](https://developers.sinch.com/docs/conversation_quick_guide) page shows you how to configure a variety of channels, get your SINCH_APP_ID and SINCH_PROJECT_ID and generate an access key to obtain your sinch_client_id and sinch_client_secret. Generate an access key to obtain sinch_client_id and sinch_client_secret. Learn more about the channels that are offered by visting https://developers.sinch.com/docs/conversation-channel-support. 
+Our [getting started](https://developers.sinch.com/docs/conversation_quick_guide) page shows you how to configure a variety of channels, get your SINCH_APP_ID and SINCH_PROJECT_ID and generate an access key to obtain your sinch_client_id and sinch_client_secret. Click [here](https://developers.sinch.com/docs/conversation-channel-support) to learn more about the channels that Sinch offers.
 
 Once you have your SINCH_APP_ID, SINCH_PROJECT_ID and access key, install [Ngrok](https://ngrok.com/) to expose your app to the world and begin leveraging the power of Hubspot and the Sinch Conversation API. Click [here](https://developers.sinch.com/docs/conversation) to learn more about the Sinch Conversation API.
 
